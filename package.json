@@ -6,7 +6,9 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "hono": "^4.6.12"
+    "@hono/zod-openapi": "^0.18.2",
+    "hono": "^4.6.12",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",
