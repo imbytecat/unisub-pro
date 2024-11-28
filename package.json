@@ -8,6 +8,9 @@
   "dependencies": {
     "@hono/zod-openapi": "^0.18.2",
     "hono": "^4.6.12",
+    "hono-pino": "^0.7.0",
+    "pino": "^9.5.0",
+    "stoker": "^1.4.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
