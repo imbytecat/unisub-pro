@@ -1,7 +1,7 @@
-import * as process from 'node:process'
 import app from '@/app'
+import env from '@/env'
 
-const port: number = Number(process.env.PORT) || 3000
+const port: number = env.PORT || 3000
 
 console.log(`Server is running on http://localhost:${port}`)
 Bun.serve({

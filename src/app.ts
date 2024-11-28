@@ -1,11 +1,7 @@
 import type { PinoLogger } from 'hono-pino'
 import { logger } from '@/middlewares/logger'
 import { OpenAPIHono } from '@hono/zod-openapi'
-import { config } from 'dotenv'
-import { expand } from 'dotenv-expand'
 import { notFound, onError } from 'stoker/middlewares'
-
-expand(config())
 
 type AppBindings = {
   Variables: {
