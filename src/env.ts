@@ -24,7 +24,7 @@ try {
 catch (e) {
   const error = e as ZodError
   console.error('❌ Invalid environment variables:', error.format())
-  console.error(error.flatten())
+  console.error(error.flatten().fieldErrors)
   process.exit(1)
 }
 
