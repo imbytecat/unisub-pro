@@ -5,6 +5,10 @@ import * as pretty from 'pino-pretty'
 
 export const logger = () => {
   return pinoLogger({
-    pino: pino(process.env.NODE_ENV === 'production' ? undefined : pretty.PinoPretty()),
+    pino: pino(
+      process.env.NODE_ENV === 'production'
+        ? undefined
+        : pretty.PinoPretty(),
+    ),
   })
 }
