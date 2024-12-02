@@ -25,10 +25,13 @@ export const user = sqliteTable('user', {
  * 用于组成节点组
  */
 export const proxy = sqliteTable('proxy', {
-  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  id: integer('id', { mode: 'number' })
+    .primaryKey({ autoIncrement: true }),
   // name: text('name').notNull(),
-  profile: text('profile', { mode: 'json' }).notNull(), // 若定义类型，则会导致难以存储额外字段
-  userId: integer('user_id').notNull(),
+  profile: text('profile', { mode: 'json' })
+    .notNull(), // 若定义类型，则会导致难以存储额外字段
+  userId: integer('user_id')
+    .notNull(),
 })
 
 /**
@@ -36,17 +39,23 @@ export const proxy = sqliteTable('proxy', {
  * 用于生成节点列表，在下面订阅配置中类似第三方订阅的存在
  */
 export const proxyGroup = sqliteTable('proxy_group', {
-  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-  name: text('name').notNull(),
-  proxies: text('proxies', { mode: 'json' }).notNull().$type<
+  id: integer('id', { mode: 'number' })
+    .primaryKey({ autoIncrement: true }),
+  name: text('name')
+    .notNull(),
+  proxies: text('proxies', { mode: 'json' })
+    .notNull()
+    .$type<
     Array<{
       proxyId: number
       isEnabled: boolean
     }>
   >(),
   isEnabled: integer('is_enabled', { mode: 'boolean' }),
-  token: text('token').notNull(),
-  userId: integer('user_id').notNull(),
+  token: text('token')
+    .notNull(),
+  userId: integer('user_id')
+    .notNull(),
 })
 
 /**
@@ -69,10 +78,12 @@ type ProxyProviderMap = {
 type ProxyProvider<T extends keyof ProxyProviderMap> = ProxyProviderMap[T]
 
 export const subscription = sqliteTable('subscription', {
-  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  id: integer('id', { mode: 'number' })
+    .primaryKey({ autoIncrement: true }),
   proxyProviders: text('proxy_providers', { mode: 'json' })
     .notNull()
     .$type<ProxyProvider<keyof ProxyProviderMap>>(),
   isEnabled: integer('is_enabled', { mode: 'boolean' }),
-  token: text('token').notNull(),
+  token: text('token')
+    .notNull(),
 })
